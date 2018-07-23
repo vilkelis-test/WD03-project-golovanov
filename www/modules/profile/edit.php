@@ -98,32 +98,37 @@ if (isset($_POST['profile-update'])) {
 			$moveResult = move_uploaded_file($fileTmpLoc, $uploadedfile);
 			if ($moveResult != true) {
 				$errors[] = ['title' => 'Ошибка сохранения файла'];
+			} else {
+				include_once( ROOT."libs/image_resize_imagick.php");
+
+				//Big image
+				$target_file = $uploadedfile;
+				$resized_file = $uploadedfile;
+				$wmax = 222;
+				$hmax = 222;
+				$img = createThumbnail($target_file,$wmax, $hmax);
+				$img->writeImage($resized_file);
+
+				$photo = $db_file_name;
+
+				//Small image
+				$target_file = $uploadedfile;
+				$resized_file = $photoFolderLocation . '48-' . $db_file_name;
+				$wmax = 48;
+				$hmax = 48;
+				$img = createThumbnail($target_file,$wmax, $hmax);
+				$img->writeImage($resized_file);
+
+				$photoSmall = '48-'.$db_file_name;
 			}
-
-			include_once( ROOT."libs/image_resize_imagick.php");
-
-			//Big image
-			$target_file = $uploadedfile;
-			$resized_file = $uploadedfile;
-			$wmax = 222;
-			$hmax = 222;
-			$img = createThumbnail($target_file,$wmax, $hmax);
-			$img->writeImage($resized_file);
-
-			$user->photo = $db_file_name;
-
-			//Small image
-			$target_file = $uploadedfile;
-			$resized_file = $photoFolderLocation . '48-' . $db_file_name;
-			$wmax = 48;
-			$hmax = 48;
-			$img = createThumbnail($target_file,$wmax, $hmax);
-			$img->writeImage($resized_file);
-
-			$user->photoSmall = '48-'.$db_file_name;
 	}
 
 	if(empty($errors)) {	
+
+		if($isPhoto == true) {
+			$user->photo = $photo;
+			$user->photoSmall = $photoSmall;
+		}
 
 		$user->name = htmlentities($_POST['name']);
 		$user->surname = htmlentities($_POST['surname']);

@@ -44,3 +44,11 @@ input.button {
 }
 
 
+.header__nav-link:hover {
+  padding-bottom: 55px;
+}
+
+.header__nav-link--active {
+  border-bottom:none;
+}
+

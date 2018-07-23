@@ -44,18 +44,26 @@ switch ($uri[0]) {
 	case 'profile-edit':
 		include ROOT."modules/profile/edit.php";
 		break;
-
 	case 'about':
 		include ROOT."modules/about/index.php";
-		break;
+		break;		
 	case 'contacts':
 		include ROOT."modules/contacts/index.php";
 		break;
 	case 'blog':
 		include ROOT."modules/blog/index.php";
 		break;
+	case 'blog/post-new':
+		include ROOT."modules/blog/post-new.php";
+		break;		
+	case 'blog/post':
+		include ROOT."modules/blog/post.php";
+		break;		
+	case 'portfolio':
+		include ROOT."modules/portfolio/index.php";
+		break;		
 	default:
-		echo "404 page and go to Main page";
+		echo "404 page";
 		break;
 }
 

@@ -2,7 +2,7 @@
 	<div class="header-user__profil float-left mr-20">
 		<div class="avatar--small">
 			<?php if( $currentUser->photo_small != '') {?>
-			<img src="<?=HOST?>usercontent/photo/<?=$user->photo_small?>" alt="<?= empty($currentUser->name) ? $currentUser->email : $currentUser->name . ' ' . $currentUser->surname?>">
+			<img src="<?=HOST?>usercontent/photo/<?=$currentUser->photo_small?>" alt="<?= empty($currentUser->name) ? $currentUser->email : $currentUser->name . ' ' . $currentUser->surname?>">
 			<?php } ?>
 		</div>
 	</div>
