@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Июл 19 2018 г., 17:47
+-- Время создания: Июл 19 2018 г., 20:06
 -- Версия сервера: 5.6.38
 -- Версия PHP: 5.5.38
 
@@ -40,6 +40,28 @@ CREATE TABLE `about` (
 
 INSERT INTO `about` (`id`, `name`, `description`) VALUES
 (1, 'Егор Казаков', 'Веб разработчик');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `categories`
+--
+
+CREATE TABLE `categories` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `title` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `author_id` int(11) UNSIGNED DEFAULT NULL,
+  `date_time` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+
+--
+-- Дамп данных таблицы `categories`
+--
+
+INSERT INTO `categories` (`id`, `title`, `author_id`, `date_time`) VALUES
+(1, 'Путешествие', 1, '2018-07-19 18:40:22'),
+(2, 'Спорт', 1, '2018-07-19 18:40:34'),
+(4, 'Отдых', 1, '2018-07-19 19:24:29');
 
 -- --------------------------------------------------------
 
@@ -110,6 +132,13 @@ ALTER TABLE `about`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Индексы таблицы `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `index_foreignkey_categories_author` (`author_id`);
+
+--
 -- Индексы таблицы `posts`
 --
 ALTER TABLE `posts`
@@ -131,6 +160,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `about`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT для таблицы `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT для таблицы `posts`
