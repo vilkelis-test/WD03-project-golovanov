@@ -1,0 +1,46 @@
+input.button {
+	padding-top: 0;
+}
+
+.error {
+	display: block;
+	line-height: 1.3;
+	padding-top: 11px;
+	padding-bottom: 15px;
+}
+
+.error-with-desc {
+	line-height: 1.3;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+.error-with-desc-bottom {
+	padding: 15px 15px 15px 15px;
+	color: #000;
+}
+
+.error-with-desc-bottom p {
+	margin-top: 0;
+	margin-bottom: 10px;
+	line-height: 1.5;
+	text-align: justify;
+}
+
+.error-with-desc-bottom p:last-child {
+	margin-bottom: 10px;
+}
+
+.hidden {
+	display: none;
+}
+
+.error-success {
+	background-color: #00a85a;
+	background-image: -webkit-gradient(linear, left bottom, left top, from(#006e3b), to(#00a85a)); 
+	background-image: -webkit-linear-gradient(bottom, #006e3b 0%, #00a85a 100%); 
+	background-image: -o-linear-gradient(bottom, #006e3b 0%, #00a85a 100%);
+	background-image: linear-gradient(to top, #006e3b 0%, #00a85a 100%);
+}
+
+
