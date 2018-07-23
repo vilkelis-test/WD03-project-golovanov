@@ -1,5 +1,10 @@
 <?php 
 
+if (!isLoggedIn()) {
+	header('Location: ' .HOST);
+	die();
+}
+
 $title = "Профиль пользователя";
 $description = "Просмотр профиля пользователя";
 

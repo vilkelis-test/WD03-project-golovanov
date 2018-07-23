@@ -1,7 +1,13 @@
 <?php 
 
+if (!isAdmin()) {
+	header('Location: ' .HOST);
+	die();
+}
+
 $title = "Добавить пост";
 $description = "Добавить новый пост в блог";
+$cats = R::find('categories','ORDER BY title');
 
 if (isset($_POST['post-new'])) {
 
@@ -52,20 +58,7 @@ if (isset($_POST['post-new'])) {
 
 	if(empty($errors) && $isPhoto == true) {
 		
-			// $img = $post->img;	
-			// $imgSmall = $post->imgSmall;
 			$postFolderLocation = ROOT . 'usercontent/blog/';
-
-			//Удаляем файл, если он сушествует
-			// if ($img != '') {
-			// 	$imgPath = $postFolderLocation . $img;
-			// 	if (file_exists($imgPath)) { unlink($imgPath); }
-			// }
-
-			// if ($imgSmall != '') {
-			// 	$imgPath = $postFolderLocation . $imgSmall;
-			// 	if (file_exists($imgPath)) { unlink($imgPath); }
-			// }
 
 			//Перемещаем загружаемый файл в нашу папку
 			$db_file_name = rand(10000000000,99999999999) . "." . $fileExt;
@@ -107,13 +100,14 @@ if (isset($_POST['post-new'])) {
 		}
 
 		$post->title = htmlentities($_POST['postTitle']);
+		$post->categoryId = htmlentities($_POST['postCategory']);
 		$post->text = htmlentities($_POST['postText']);
 		$post->authorId = $currentUser->id;
 		$post->dateTime = R::isoDateTime();
 
 		R::store($post);
-	 
-		header('Location: ' .HOST.'blog');
+	 		
+		header('Location: ' .HOST.'blog?result=postCreated');
 		exit();
 	}
 

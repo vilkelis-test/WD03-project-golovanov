@@ -7,8 +7,9 @@
 		<div class="error error-js hidden"> </div>
 	</div>
 
-	<div class="login-page-form__row"><input name="email" class="input" type="email" placeholder="E-mail" <?= !empty($errors) ? 'value="'.htmlentities($_POST['email']).'"' : ''?> /></div>
-	<div class="login-page-form__row"><input name="password" class="input" type="password" placeholder="Пароль" /></div>
+	<div class="login-page-form__row"><input name="email" class="input" type="email" placeholder="E-mail" 
+		<?= !empty($errors) ? 'value="'.htmlentities($_POST['email']).'"' : 'value=aaa@aaa.ru'?> /></div>
+	<div class="login-page-form__row"><input name="password" class="input" type="password" placeholder="Пароль" value="12345" /></div>
 	<div class="login-page-form__row">
 		<div class="login-page-form__col">
 			<div class="checkbox"><label class="checkbox__label"><input name="save-me" class="checkbox__input" type="checkbox" checked="checked"/><span class="checkbox__check-inner"></span><span class="checkbox__check-inner-label">Запомнить меня</span></label></div>
