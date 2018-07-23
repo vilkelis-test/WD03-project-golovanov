@@ -8,15 +8,15 @@
 				<form enctype="multipart/form-data" action="<?=HOST?>profile-edit" method="POST" class="form mb-100 pb-20 pt-35" >
 					<div class="row fieldset">
 						<div class="col-4"><label><div class="fieldset__title">Имя</div>
-							<input name="name" value="<?= empty($errors) ? $user->name : $_POST['name']?>" class="input" placeholder="Введите имя"></label></div>
+							<input name="name" value="<?= empty($errors) ? $user->name : htmlentities($_POST['name'])?>" class="input" placeholder="Введите имя"></label></div>
 					</div>
 					<div class="row fieldset">
 						<div class="col-4"><label><div class="fieldset__title">Фамилия</div>
-							<input name="surname" value="<?= empty($errors) ? $user->surname : $_POST['surname']?>" class="input" placeholder="Введите фамилию"></label></div>
+							<input name="surname" value="<?= empty($errors) ? $user->surname : htmlentities($_POST['surname'])?>" class="input" placeholder="Введите фамилию"></label></div>
 					</div>
 					<div class="row fieldset">
 						<div class="col-4"><label><div class="fieldset__title">Email</div>
-							<input name="email" value="<?= empty($errors) ? $user->email : $_POST['email']?>" class="input" type="email" placeholder="Введите email"></label></div>
+							<input name="email" value="<?= empty($errors) ? $user->email : htmlentities($_POST['email'])?>" class="input" type="email" placeholder="Введите email"></label></div>
 					</div>
 					<div class="fieldset">
 						<div class="fieldset__title">Фотография</div>
@@ -27,11 +27,11 @@
 					</div>
 					<div class="row fieldset">
 						<div class="col-4"><label><div class="fieldset__title">Страна</div>
-							<input name="country" value="<?= empty($errors) ? $user->country : $_POST['country']?>" class="input" placeholder="Введите страну"></label></div>
+							<input name="country" value="<?= empty($errors) ? $user->country : htmlentities($_POST['country'])?>" class="input" placeholder="Введите страну"></label></div>
 					</div>
 					<div class="row fieldset mb-30">
 						<div class="col-4"><label><div class="fieldset__title">Город</div>
-							<input name="city" value="<?= empty($errors) ? $user->city : $_POST['city']?>" class="input" placeholder="Введите город"></label></div>
+							<input name="city" value="<?= empty($errors) ? $user->city : htmlentities($_POST['city'])?>" class="input" placeholder="Введите город"></label></div>
 					</div>
 					<div class="row">
 						<div class="col-md-auto pr-10"><input class="button button--save" type="submit" name="profile-update" value="Сохранить"></div>
