@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Июл 24 2018 г., 18:31
+-- Время создания: Июл 24 2018 г., 22:04
 -- Версия сервера: 5.6.38
 -- Версия PHP: 5.5.38
 
@@ -100,6 +100,33 @@ INSERT INTO `comments` (`id`, `post_id`, `user_id`, `text`, `date_time`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `contacts`
+--
+
+CREATE TABLE `contacts` (
+  `id` int(11) NOT NULL,
+  `email` varchar(191) DEFAULT NULL,
+  `phone` varchar(191) DEFAULT NULL,
+  `address` varchar(191) DEFAULT NULL,
+  `name` varchar(191) DEFAULT NULL,
+  `surname` varchar(191) DEFAULT NULL,
+  `skype` varchar(191) DEFAULT NULL,
+  `vk` varchar(191) DEFAULT NULL,
+  `fb` varchar(191) DEFAULT NULL,
+  `github` varchar(191) DEFAULT NULL,
+  `twitter` varchar(191) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `contacts`
+--
+
+INSERT INTO `contacts` (`id`, `email`, `phone`, `address`, `name`, `surname`, `skype`, `vk`, `fb`, `github`, `twitter`) VALUES
+(1, 'aaa@aaa.ru', '222-222-222', 'Москва', 'Степан', 'Голованов', 'aaa-admin', 'https://vk.com/id20460443', 'https://www.facebook.com', '', '');
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `posts`
 --
 
@@ -181,6 +208,12 @@ ALTER TABLE `comments`
   ADD KEY `index_foreignkey_comments_user` (`user_id`);
 
 --
+-- Индексы таблицы `contacts`
+--
+ALTER TABLE `contacts`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `posts`
 --
 ALTER TABLE `posts`
@@ -217,10 +250,16 @@ ALTER TABLE `comments`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
+-- AUTO_INCREMENT для таблицы `contacts`
+--
+ALTER TABLE `contacts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT для таблицы `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT для таблицы `users`

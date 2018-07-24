@@ -118,3 +118,13 @@ display: table;
 clear:both;
 }
 
+.contact-item {
+ margin-bottom: 10px;
+}
+
+.contact-social-link {
+	margin-bottom: 15px;
+	font-weight: 700;
+	display: block;
+}
+

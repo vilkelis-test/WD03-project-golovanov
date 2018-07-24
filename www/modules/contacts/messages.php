@@ -1,13 +1,16 @@
 <?php
 
-$contacts = R::load('contacts',1);
+if (!isAdmin()) {
+	header('Location: ' .HOST);
+	die();
+}
 
-$title = "Контакты";
-$description = "Контакты";
+$title = "Сообщения пользователей";
+$description = "Сообщения от пользователей";
 
 ob_start();
 include ROOT.'templates/_parts/_header.tpl';
-include ROOT.'templates/contacts/contacts.tpl';
+include ROOT.'templates/contacts/messages.tpl';
 $pageContent = ob_get_contents();
 ob_end_clean();
 
