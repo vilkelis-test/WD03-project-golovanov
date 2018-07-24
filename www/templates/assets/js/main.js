@@ -41,14 +41,17 @@ $(document).ready(function() {
 		.on( 'focus', function(){ $(this).addClass( 'has-focus' ); })
 		.on( 'blur', function(){ $(this).removeClass( 'has-focus' ); });
 
-	$('.comment-add__button').on('click', function(e){
-		e.preventDefault();
+	$('input[data-add-comment]').on('click', function(e){		
 		comment = $('.comment-add-block__text').children('.textarea');
 		if ( comment.val() == '' ) {
-			$('.error').fadeIn();
+			e.preventDefault();
+			$('.error-js').fadeIn();
 			comment.focus(function(event) {
-				$('.error').fadeOut();
+				$('.error-js').fadeOut();
 			});
+		}
+		else {
+			//Default action
 		}
 	});
 

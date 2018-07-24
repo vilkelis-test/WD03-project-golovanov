@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Июл 23 2018 г., 18:40
+-- Время создания: Июл 24 2018 г., 18:31
 -- Версия сервера: 5.6.38
 -- Версия PHP: 5.5.38
 
@@ -62,6 +62,40 @@ INSERT INTO `categories` (`id`, `title`, `author_id`, `date_time`) VALUES
 (1, 'Путешествие', 1, '2018-07-19 18:40:22'),
 (2, 'Спорт', 1, '2018-07-19 18:40:34'),
 (4, 'Отдых', 1, '2018-07-19 19:24:29');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `comments`
+--
+
+CREATE TABLE `comments` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `post_id` int(11) UNSIGNED DEFAULT NULL,
+  `user_id` int(11) UNSIGNED DEFAULT NULL,
+  `text` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `date_time` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+
+--
+-- Дамп данных таблицы `comments`
+--
+
+INSERT INTO `comments` (`id`, `post_id`, `user_id`, `text`, `date_time`) VALUES
+(1, 21, 1, 'Вот это еще комментарий', '2018-07-23 20:49:24'),
+(2, 21, 1, 'вввв', '2018-07-23 21:03:30'),
+(3, 21, 1, 'ыфаыфафыаыфва', '2018-07-23 21:31:50'),
+(4, 21, 1, 'фываыфваыфв', '2018-07-23 21:31:55'),
+(5, 21, 1, 'sssss', '2018-07-23 21:41:12'),
+(6, 21, 1, 'dfgdsfgdsfgdsfg', '2018-07-23 21:41:16'),
+(7, 21, 1, 'sdsffdsfddf', '2018-07-23 21:44:03'),
+(8, 21, 1, 'Еще комментарий', '2018-07-23 21:44:19'),
+(9, 21, 1, 'ыавыфыфав', '2018-07-23 21:46:40'),
+(10, 21, 1, '1111', '2018-07-23 21:46:43'),
+(11, 21, 1, '2322', '2018-07-23 21:46:47'),
+(12, 14, 1, 'Вот это цветочки\r\n', '2018-07-23 21:53:09'),
+(13, 14, 14, 'А вот мой комментарий', '2018-07-23 21:56:13'),
+(14, 15, 1, 'ыыы', '2018-07-23 22:24:05');
 
 -- --------------------------------------------------------
 
@@ -139,6 +173,14 @@ ALTER TABLE `categories`
   ADD KEY `index_foreignkey_categories_author` (`author_id`);
 
 --
+-- Индексы таблицы `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `index_foreignkey_comments_post` (`post_id`),
+  ADD KEY `index_foreignkey_comments_user` (`user_id`);
+
+--
 -- Индексы таблицы `posts`
 --
 ALTER TABLE `posts`
@@ -167,6 +209,12 @@ ALTER TABLE `about`
 --
 ALTER TABLE `categories`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT для таблицы `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT для таблицы `posts`
