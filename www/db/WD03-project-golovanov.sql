@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Июл 24 2018 г., 22:04
+-- Время создания: Июл 25 2018 г., 00:07
 -- Версия сервера: 5.6.38
 -- Версия PHP: 5.5.38
 
@@ -127,6 +127,30 @@ INSERT INTO `contacts` (`id`, `email`, `phone`, `address`, `name`, `surname`, `s
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `messages`
+--
+
+CREATE TABLE `messages` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `text` text COLLATE utf8mb4_unicode_520_ci,
+  `date_time` datetime DEFAULT NULL,
+  `message_file_original` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `message_file` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+
+--
+-- Дамп данных таблицы `messages`
+--
+
+INSERT INTO `messages` (`id`, `email`, `name`, `text`, `date_time`, `message_file_original`, `message_file`) VALUES
+(9, 'aaa@aa.ru', 'Аптека 74 Плюс', 'Травникам хорошо известно, что правильный и своевременный сбор лекарственных трав, ягод, плодов и т.д. &ndash; это гарантия того, что они сохранят при высушивании все свои целебные свойства. Это означает, что их можно будет использовать для лечения многие недугов. Сегодня мы расскажем, какие лекарственные травы собирать в июле.', '2018-07-25 00:05:03', 'Chrysanthemum.jpg', '1277987215.jpg'),
+(10, 'shish@sh.ru', 'Петр Шишкорев', 'Цель Жемчужного марафона - это продвижение водных видов туризма и рекреационных видов деятельности, в частности каякинга. А также привлечение внимания к экологической ситуации на озере Тургояк, и популяризации не наносящих озеру Тургояк вреда, водных видов транспорта', '2018-07-25 00:06:34', 'Penguins.jpg', '1395418386.jpg');
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `posts`
 --
 
@@ -214,6 +238,12 @@ ALTER TABLE `contacts`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Индексы таблицы `messages`
+--
+ALTER TABLE `messages`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `posts`
 --
 ALTER TABLE `posts`
@@ -254,6 +284,12 @@ ALTER TABLE `comments`
 --
 ALTER TABLE `contacts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT для таблицы `messages`
+--
+ALTER TABLE `messages`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT для таблицы `posts`

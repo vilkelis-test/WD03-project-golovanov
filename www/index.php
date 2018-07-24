@@ -88,7 +88,10 @@ switch ($uri[0]) {
 		break;		
 	case 'messages':
 		include ROOT."modules/contacts/messages.php";
-		break;			
+		break;	
+	case 'message-delete':
+		include ROOT."modules/contacts/message-delete.php";
+		break;				
 	default:
 		echo "404 page";
 		break;
