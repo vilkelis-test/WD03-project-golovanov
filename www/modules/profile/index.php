@@ -5,10 +5,26 @@ if (!isLoggedIn()) {
 	die();
 }
 
+$user = R::load('users', $currentUser->id);
+
+$sqlComments = "
+ SELECT 
+	 c.text,
+	 c.date_time, 
+	 c.post_id,
+	 p.title as post_title
+ FROM comments c
+ LEFT JOIN posts p on p.id = c.post_id		
+ WHERE 
+   c.user_id = ? 
+ ORDER BY c.date_time DESC
+";
+
+$comments = R::getAll($sqlComments,[$user->id]);
+
+
 $title = "Профиль пользователя";
 $description = "Просмотр профиля пользователя";
-
-$user = R::load('users', $currentUser->id);
 
 // Готовим контент для центральной части
 ob_start();
