@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Июл 23 2018 г., 18:40
+-- Время создания: Июл 25 2018 г., 00:07
 -- Версия сервера: 5.6.38
 -- Версия PHP: 5.5.38
 
@@ -62,6 +62,91 @@ INSERT INTO `categories` (`id`, `title`, `author_id`, `date_time`) VALUES
 (1, 'Путешествие', 1, '2018-07-19 18:40:22'),
 (2, 'Спорт', 1, '2018-07-19 18:40:34'),
 (4, 'Отдых', 1, '2018-07-19 19:24:29');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `comments`
+--
+
+CREATE TABLE `comments` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `post_id` int(11) UNSIGNED DEFAULT NULL,
+  `user_id` int(11) UNSIGNED DEFAULT NULL,
+  `text` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `date_time` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+
+--
+-- Дамп данных таблицы `comments`
+--
+
+INSERT INTO `comments` (`id`, `post_id`, `user_id`, `text`, `date_time`) VALUES
+(1, 21, 1, 'Вот это еще комментарий', '2018-07-23 20:49:24'),
+(2, 21, 1, 'вввв', '2018-07-23 21:03:30'),
+(3, 21, 1, 'ыфаыфафыаыфва', '2018-07-23 21:31:50'),
+(4, 21, 1, 'фываыфваыфв', '2018-07-23 21:31:55'),
+(5, 21, 1, 'sssss', '2018-07-23 21:41:12'),
+(6, 21, 1, 'dfgdsfgdsfgdsfg', '2018-07-23 21:41:16'),
+(7, 21, 1, 'sdsffdsfddf', '2018-07-23 21:44:03'),
+(8, 21, 1, 'Еще комментарий', '2018-07-23 21:44:19'),
+(9, 21, 1, 'ыавыфыфав', '2018-07-23 21:46:40'),
+(10, 21, 1, '1111', '2018-07-23 21:46:43'),
+(11, 21, 1, '2322', '2018-07-23 21:46:47'),
+(12, 14, 1, 'Вот это цветочки\r\n', '2018-07-23 21:53:09'),
+(13, 14, 14, 'А вот мой комментарий', '2018-07-23 21:56:13'),
+(14, 15, 1, 'ыыы', '2018-07-23 22:24:05');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `contacts`
+--
+
+CREATE TABLE `contacts` (
+  `id` int(11) NOT NULL,
+  `email` varchar(191) DEFAULT NULL,
+  `phone` varchar(191) DEFAULT NULL,
+  `address` varchar(191) DEFAULT NULL,
+  `name` varchar(191) DEFAULT NULL,
+  `surname` varchar(191) DEFAULT NULL,
+  `skype` varchar(191) DEFAULT NULL,
+  `vk` varchar(191) DEFAULT NULL,
+  `fb` varchar(191) DEFAULT NULL,
+  `github` varchar(191) DEFAULT NULL,
+  `twitter` varchar(191) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `contacts`
+--
+
+INSERT INTO `contacts` (`id`, `email`, `phone`, `address`, `name`, `surname`, `skype`, `vk`, `fb`, `github`, `twitter`) VALUES
+(1, 'aaa@aaa.ru', '222-222-222', 'Москва', 'Степан', 'Голованов', 'aaa-admin', 'https://vk.com/id20460443', 'https://www.facebook.com', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `messages`
+--
+
+CREATE TABLE `messages` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `text` text COLLATE utf8mb4_unicode_520_ci,
+  `date_time` datetime DEFAULT NULL,
+  `message_file_original` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `message_file` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+
+--
+-- Дамп данных таблицы `messages`
+--
+
+INSERT INTO `messages` (`id`, `email`, `name`, `text`, `date_time`, `message_file_original`, `message_file`) VALUES
+(9, 'aaa@aa.ru', 'Аптека 74 Плюс', 'Травникам хорошо известно, что правильный и своевременный сбор лекарственных трав, ягод, плодов и т.д. &ndash; это гарантия того, что они сохранят при высушивании все свои целебные свойства. Это означает, что их можно будет использовать для лечения многие недугов. Сегодня мы расскажем, какие лекарственные травы собирать в июле.', '2018-07-25 00:05:03', 'Chrysanthemum.jpg', '1277987215.jpg'),
+(10, 'shish@sh.ru', 'Петр Шишкорев', 'Цель Жемчужного марафона - это продвижение водных видов туризма и рекреационных видов деятельности, в частности каякинга. А также привлечение внимания к экологической ситуации на озере Тургояк, и популяризации не наносящих озеру Тургояк вреда, водных видов транспорта', '2018-07-25 00:06:34', 'Penguins.jpg', '1395418386.jpg');
 
 -- --------------------------------------------------------
 
@@ -139,6 +224,26 @@ ALTER TABLE `categories`
   ADD KEY `index_foreignkey_categories_author` (`author_id`);
 
 --
+-- Индексы таблицы `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `index_foreignkey_comments_post` (`post_id`),
+  ADD KEY `index_foreignkey_comments_user` (`user_id`);
+
+--
+-- Индексы таблицы `contacts`
+--
+ALTER TABLE `contacts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `messages`
+--
+ALTER TABLE `messages`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `posts`
 --
 ALTER TABLE `posts`
@@ -169,10 +274,28 @@ ALTER TABLE `categories`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT для таблицы `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT для таблицы `contacts`
+--
+ALTER TABLE `contacts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT для таблицы `messages`
+--
+ALTER TABLE `messages`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
 -- AUTO_INCREMENT для таблицы `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
