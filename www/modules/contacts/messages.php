@@ -5,6 +5,8 @@ if (!isAdmin()) {
 	die();
 }
 
+$messages = R::find('messages', 'ORDER BY id DESC');
+
 $title = "Сообщения пользователей";
 $description = "Сообщения от пользователей";
 
