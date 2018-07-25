@@ -40,7 +40,7 @@ input.button {
 	background-image: -webkit-gradient(linear, left bottom, left top, from(#006e3b), to(#00a85a)); 
 	background-image: -webkit-linear-gradient(bottom, #006e3b 0%, #00a85a 100%); 
 	background-image: -o-linear-gradient(bottom, #006e3b 0%, #00a85a 100%);
-	background-image: linear-gradient(to top, #006e3b 0%, #00a85a 100%);
+	background-image: linear-gradient(to top, #006e3b 0%, #00a85a 100%);	
 }
 
 
@@ -68,3 +68,63 @@ input.button {
 	padding-left: 1.3em;
 	line-height: 1;	
 }
+
+.button--middle {
+  font-size: 16px;
+  height:40px;
+  padding-right: 1.8em;
+  padding-left: 1.8em;
+  line-height: 1.2;
+}
+
+.uploaded-image {
+	background-color: white;
+}
+
+.mr-330 {
+	margin-right: 330px;
+}
+
+body::before {
+    content: "";
+    display: none;
+}
+
+html, body {
+	height: 100% !important;
+}
+ 
+.sticky-footer {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;	
+}
+
+
+.avatar--small {
+	width: 48px;
+	height: 48px;
+	background-size: cover; 
+}
+
+.clearfix:before {
+content: "";
+display: table;
+}
+
+.clearfix:after {
+content: "";
+display: table;
+clear:both;
+}
+
+.contact-item {
+ margin-bottom: 10px;
+}
+
+.contact-social-link {
+	margin-bottom: 15px;
+	font-weight: 700;
+	display: block;
+}
+

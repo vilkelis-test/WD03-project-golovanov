@@ -1,5 +1,11 @@
 <?php 
 
+
+if (!isLoggedIn()) {
+	header('Location: ' .HOST);
+	die();
+}
+
 $title = "Редактирование профиля";
 $description = "Редактирование профиля пользователя";
 

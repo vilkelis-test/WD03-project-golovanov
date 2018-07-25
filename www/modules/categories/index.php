@@ -1,5 +1,11 @@
 <?php 
 
+if (!isAdmin()) {
+	header('Location: ' .HOST);
+	die();
+}
+
+
 $title = "Категории блога";
 $description = "Категории постов в блоге";
 

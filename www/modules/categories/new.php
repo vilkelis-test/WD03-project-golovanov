@@ -1,5 +1,11 @@
 <?php 
 
+if (!isAdmin()) {
+	header('Location: ' .HOST);
+	die();
+}
+
+
 $title = "Новая категория";
 $description = "Создать новую категорию";
 

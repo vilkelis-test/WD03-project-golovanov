@@ -56,6 +56,12 @@ switch ($uri[0]) {
 	case 'blog/post-new':
 		include ROOT."modules/blog/post-new.php";
 		break;		
+	case 'blog/post-edit':
+		include ROOT."modules/blog/post-edit.php";
+		break;		
+	case 'blog/post-delete':
+		include ROOT."modules/blog/post-delete.php";
+		break;				
 	case 'blog/post':
 		include ROOT."modules/blog/post.php";
 		break;		
@@ -73,7 +79,19 @@ switch ($uri[0]) {
 		break;			
 	case 'portfolio':
 		include ROOT."modules/portfolio/index.php";
+		break;	
+	case 'contacts':
+		include ROOT."modules/contacts/index.php";
+		break;	
+	case 'contacts-edit':
+		include ROOT."modules/contacts/edit.php";
 		break;		
+	case 'messages':
+		include ROOT."modules/contacts/messages.php";
+		break;	
+	case 'message-delete':
+		include ROOT."modules/contacts/message-delete.php";
+		break;				
 	default:
 		echo "404 page";
 		break;

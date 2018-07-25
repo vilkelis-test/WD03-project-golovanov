@@ -20,6 +20,10 @@ if ( isset($_POST['login'])) {
 			$_SESSION['logged_user'] = $user;
 			$_SESSION['login'] = '1';
 			$_SESSION['role'] = $user->role;
+			if (isset($_POST['save-me'])) {
+				ini_set('session.gs_maxlifetime',31104000);
+				ini_set('session.cookie_lifetime',31104000);
+			}
 			header('Location: ' .HOST.'');
 			exit();
 

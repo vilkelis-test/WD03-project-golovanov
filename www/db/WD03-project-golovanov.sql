@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Июл 19 2018 г., 20:06
+-- Время создания: Июл 25 2018 г., 00:07
 -- Версия сервера: 5.6.38
 -- Версия PHP: 5.5.38
 
@@ -66,6 +66,91 @@ INSERT INTO `categories` (`id`, `title`, `author_id`, `date_time`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `comments`
+--
+
+CREATE TABLE `comments` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `post_id` int(11) UNSIGNED DEFAULT NULL,
+  `user_id` int(11) UNSIGNED DEFAULT NULL,
+  `text` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `date_time` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+
+--
+-- Дамп данных таблицы `comments`
+--
+
+INSERT INTO `comments` (`id`, `post_id`, `user_id`, `text`, `date_time`) VALUES
+(1, 21, 1, 'Вот это еще комментарий', '2018-07-23 20:49:24'),
+(2, 21, 1, 'вввв', '2018-07-23 21:03:30'),
+(3, 21, 1, 'ыфаыфафыаыфва', '2018-07-23 21:31:50'),
+(4, 21, 1, 'фываыфваыфв', '2018-07-23 21:31:55'),
+(5, 21, 1, 'sssss', '2018-07-23 21:41:12'),
+(6, 21, 1, 'dfgdsfgdsfgdsfg', '2018-07-23 21:41:16'),
+(7, 21, 1, 'sdsffdsfddf', '2018-07-23 21:44:03'),
+(8, 21, 1, 'Еще комментарий', '2018-07-23 21:44:19'),
+(9, 21, 1, 'ыавыфыфав', '2018-07-23 21:46:40'),
+(10, 21, 1, '1111', '2018-07-23 21:46:43'),
+(11, 21, 1, '2322', '2018-07-23 21:46:47'),
+(12, 14, 1, 'Вот это цветочки\r\n', '2018-07-23 21:53:09'),
+(13, 14, 14, 'А вот мой комментарий', '2018-07-23 21:56:13'),
+(14, 15, 1, 'ыыы', '2018-07-23 22:24:05');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `contacts`
+--
+
+CREATE TABLE `contacts` (
+  `id` int(11) NOT NULL,
+  `email` varchar(191) DEFAULT NULL,
+  `phone` varchar(191) DEFAULT NULL,
+  `address` varchar(191) DEFAULT NULL,
+  `name` varchar(191) DEFAULT NULL,
+  `surname` varchar(191) DEFAULT NULL,
+  `skype` varchar(191) DEFAULT NULL,
+  `vk` varchar(191) DEFAULT NULL,
+  `fb` varchar(191) DEFAULT NULL,
+  `github` varchar(191) DEFAULT NULL,
+  `twitter` varchar(191) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `contacts`
+--
+
+INSERT INTO `contacts` (`id`, `email`, `phone`, `address`, `name`, `surname`, `skype`, `vk`, `fb`, `github`, `twitter`) VALUES
+(1, 'aaa@aaa.ru', '222-222-222', 'Москва', 'Степан', 'Голованов', 'aaa-admin', 'https://vk.com/id20460443', 'https://www.facebook.com', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `messages`
+--
+
+CREATE TABLE `messages` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `text` text COLLATE utf8mb4_unicode_520_ci,
+  `date_time` datetime DEFAULT NULL,
+  `message_file_original` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `message_file` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+
+--
+-- Дамп данных таблицы `messages`
+--
+
+INSERT INTO `messages` (`id`, `email`, `name`, `text`, `date_time`, `message_file_original`, `message_file`) VALUES
+(9, 'aaa@aa.ru', 'Аптека 74 Плюс', 'Травникам хорошо известно, что правильный и своевременный сбор лекарственных трав, ягод, плодов и т.д. &ndash; это гарантия того, что они сохранят при высушивании все свои целебные свойства. Это означает, что их можно будет использовать для лечения многие недугов. Сегодня мы расскажем, какие лекарственные травы собирать в июле.', '2018-07-25 00:05:03', 'Chrysanthemum.jpg', '1277987215.jpg'),
+(10, 'shish@sh.ru', 'Петр Шишкорев', 'Цель Жемчужного марафона - это продвижение водных видов туризма и рекреационных видов деятельности, в частности каякинга. А также привлечение внимания к экологической ситуации на озере Тургояк, и популяризации не наносящих озеру Тургояк вреда, водных видов транспорта', '2018-07-25 00:06:34', 'Penguins.jpg', '1395418386.jpg');
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `posts`
 --
 
@@ -76,21 +161,21 @@ CREATE TABLE `posts` (
   `author_id` int(11) UNSIGNED DEFAULT NULL,
   `date_time` datetime DEFAULT NULL,
   `img` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
-  `img_small` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL
+  `img_small` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `category_id` int(11) UNSIGNED DEFAULT NULL,
+  `date_update_time` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
 -- Дамп данных таблицы `posts`
 --
 
-INSERT INTO `posts` (`id`, `title`, `text`, `author_id`, `date_time`, `img`, `img_small`) VALUES
-(9, 'Шанс получить сумку еще есть! ', 'Друзья, мы получили много сообщений с просьбой продлить акцию &laquo;Полный профиль-3&raquo; и не могли не пойти на встречу пожеланиям &ndash; тем более, в день, когда российская сборная по футболу вышла в четвертьфинал чемпионата мира. Поэтому акция продлена на все лето &ndash; до 30 августа. Заполняйте, заказывайте и выигрывайте! Напоминаем правила акции', 1, '2018-07-19 13:38:45', '1350581892.jpg', '320-1350581892.jpg'),
-(10, 'Перечень сахароснижающих средств', 'Перечень сахароснижающих средств настолько внушителен, что даже больные диабетом порой весьма плохо ориентируется в этом лекарственном многообразии. Шесть фармакологических групп, которые различаются механизмом действия и имеют собственные положительные и отрицательные стороны, и десятки препаратов, применяющихся при диабете 2-го типа, вносят путаницу в умы потребителей. Попробуем разложить все по полкам.\r\n', 1, '2018-07-19 13:39:26', '1359097327.jpg', '320-1359097327.jpg'),
-(11, 'Бумажные бланки больничных постепенно уходят в прошлое', 'Бумажные бланки больничных постепенно уходят в прошлое &mdash; сейчас они пока еще используются, но страна постепенно переходит на электронный документооборот. Первый электронный больничный был выдан около года назад, а на сегодняшний день такие документы были получены уже почти 1,6 миллиона раз &mdash; при этом б&oacute;льшая часть в Белгородской и Липецкой областях, сообщает &laquo;Российская газета&raquo;\r\n ', 1, '2018-07-19 13:40:05', '1304085007.jpg', '320-1304085007.jpg'),
-(12, 'День психического здоровья', '10 октября 2017 года во всем мире в 26-й раз (в России &mdash; в 16-й) отметили День психического здоровья. Психическое здоровье &mdash; это не только отсутствие расстройств психики, но более широкое понятие: то состояние, когда человек может полноценно работать, справляться со стрессом и применять собственные способности на благо общества и самого себя.\r\n ', 1, '2018-07-19 13:40:43', '1298054229.jpg', '320-1298054229.jpg'),
-(13, 'Негативные факторы', 'Что стоит за термином &laquo;негативные факторы&raquo;? Это самые обычные и уже ставшие привычными действия, которые мы совершаем. Работаем за мониторами компьютеров, пользуемся контактными линзами, водим автомобиль в сумерках и ночью, используем планшеты и телефоны для чтения, проводим долгие часы на солнце при поездке на отдых. Все перечисленное может приводить как к повышению испарения слезы с поверхности глаза, его естественной защитной и увлажняющей пленки, так и нарушению ее структуры\r\n\r\n ', 1, '2018-07-19 13:41:36', '1275253499.jpg', '320-1275253499.jpg'),
-(14, 'Руководство', 'Согласно уставу Челябинского государственного университета непосредственное управление вузом осуществляется ректором, который избирается тайным голосованием на конференции сроком до пяти лет. Ректор определяет структуру университета, штатное расписание, руководит образовательной, научной, хозяйственной и финансовой деятельностью, возглавляет Ученый совет вуза. Ректором ЧелГУ является Диана Александровна Циринг.\r\n\r\nЧасть своих полномочий ректор может передавать проректорам. На этот пост человек принимается на работу по срочному трудовому договору, срок окончания которого не может превышать срок окончания полномочий ректора вуза. Количество проректоров определяет ректор. ', 1, '2018-07-19 14:16:43', '1386084615.jpg', '320-1386084615.jpg'),
-(15, 'Это без картинки', 'Пост без картинки', 1, '2018-07-19 14:20:19', NULL, NULL);
+INSERT INTO `posts` (`id`, `title`, `text`, `author_id`, `date_time`, `img`, `img_small`, `category_id`, `date_update_time`) VALUES
+(11, 'Бумажные бланки больничных постепенно уходят в прошлое', '&lt;p&gt;Бумажные бланки больничных постепенно уходят в прошлое &amp;mdash; сейчас они пока еще используются, но страна постепенно переходит на электронный документооборот. Первый электронный больничный был выдан около года назад, а на сегодняшний день такие документы были получены уже почти 1,6 миллиона раз &amp;mdash; при этом б&amp;oacute;льшая часть в Белгородской и Липецкой областях, сообщает &amp;laquo;Российская газета&amp;raquo;&lt;/p&gt;\r\n', 1, '2018-07-19 13:40:05', '1343139781.jpg', '320-1343139781.jpg', 4, '2018-07-19 22:53:37'),
+(14, 'Руководство', 'Согласно уставу Челябинского государственного университета непосредственное управление вузом осуществляется ректором, который избирается тайным голосованием на конференции сроком до пяти лет. Ректор определяет структуру университета, штатное расписание, руководит образовательной, научной, хозяйственной и финансовой деятельностью, возглавляет Ученый совет вуза. Ректором ЧелГУ является Диана Александровна Циринг.\r\n\r\nЧасть своих полномочий ректор может передавать проректорам. На этот пост человек принимается на работу по срочному трудовому договору, срок окончания которого не может превышать срок окончания полномочий ректора вуза. Количество проректоров определяет ректор. ', 1, '2018-07-19 14:16:43', '1386084615.jpg', '320-1386084615.jpg', NULL, NULL),
+(15, ' Это без картинки Это без картинки Это без картинки Это без картинки Это без картинки Это без картинки', '&lt;p&gt;Пост без картинки&lt;/p&gt;\r\n', 1, '2018-07-19 14:20:19', NULL, NULL, 4, '2018-07-20 11:21:33'),
+(20, 'фыывфыфв', '&lt;p&gt;фыыфыфв&lt;/p&gt;\r\n', 1, '2018-07-20 11:17:30', NULL, NULL, 4, NULL),
+(21, '121212', '&lt;p&gt;sdaadsdsasad sdafdsa safasfd&amp;nbsp;&amp;nbsp;&lt;/p&gt;\r\n', 1, '2018-07-23 17:40:08', '1355349587.jpg', '320-1355349587.jpg', 4, '2018-07-23 18:00:15');
 
 -- --------------------------------------------------------
 
@@ -139,11 +224,32 @@ ALTER TABLE `categories`
   ADD KEY `index_foreignkey_categories_author` (`author_id`);
 
 --
+-- Индексы таблицы `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `index_foreignkey_comments_post` (`post_id`),
+  ADD KEY `index_foreignkey_comments_user` (`user_id`);
+
+--
+-- Индексы таблицы `contacts`
+--
+ALTER TABLE `contacts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `messages`
+--
+ALTER TABLE `messages`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `posts`
 --
 ALTER TABLE `posts`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `index_foreignkey_posts_author` (`author_id`);
+  ADD KEY `index_foreignkey_posts_author` (`author_id`),
+  ADD KEY `index_foreignkey_posts_category` (`category_id`);
 
 --
 -- Индексы таблицы `users`
@@ -165,19 +271,37 @@ ALTER TABLE `about`
 -- AUTO_INCREMENT для таблицы `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT для таблицы `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT для таблицы `contacts`
+--
+ALTER TABLE `contacts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT для таблицы `messages`
+--
+ALTER TABLE `messages`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT для таблицы `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
